@@ -10,18 +10,17 @@ while (sixTeenRandomNumber.length < 16){
 console.log(sixTeenRandomNumber);
 
 var user = [];
+var check = false;
 
-while (user.length < 2) {
+while (user.length < 2 && check === false) {
     var number = parseInt(prompt("Inserisci un numero tra 1 e 100"));
-    if (user.indexOf(number) === -1) {
-        if (number === sixTeenRandomNumber) {
-            alert("HAI PRESO UNA MINA")
-            break;
-        } else {
-            user.push(number);
+    for (var x = 0; x < sixTeenRandomNumber.length; x++) {
+        if (number === sixTeenRandomNumber[x]) {
+            check = true;
+        }
+        if (check) {
+            document.getElementsByClassName("campo-minato")[0].innerHTML = "HAI PRESO UNA MINA";
         }
     }
+    document.getElementsByClassName("risultato")[0].innerHTML = "NUMERI INSERITI: " + user;
 }
-
-document.getElementsByClassName("campo-minato")[0].innerHTML = user;
-

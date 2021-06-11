@@ -2,25 +2,43 @@
 var sixTeenRandomNumber = [];
 
 while (sixTeenRandomNumber.length < 16){
-    var random = Math.floor(Math.random() * 100) + 1;
-    if(sixTeenRandomNumber.indexOf(random) === -1) {
-        sixTeenRandomNumber.push(random);
+    var randomNumberComputer = Math.floor(Math.random() * 100) + 1;
+    if(!sixTeenRandomNumber.includes(randomNumberComputer)) {
+        sixTeenRandomNumber.push(randomNumberComputer);
     }
 }
 console.log(sixTeenRandomNumber);
 
 var user = [];
 var check = false;
+var tentativiUser = 5;
 
-while (user.length < 2 && check === false) {
-    var number = parseInt(prompt("Inserisci un numero tra 1 e 100"));
-    for (var x = 0; x < sixTeenRandomNumber.length; x++) {
-        if (number === sixTeenRandomNumber[x]) {
-            check = true;
-        }
-        if (check) {
-            document.getElementsByClassName("campo-minato")[0].innerHTML = "HAI PRESO UNA MINA";
-        }
+while (user.length < tentativiUser) {
+    var number = parseInt(prompt("BENVENUTO: Inserisci un numero tra 1 e 100"));
+    if (!number.length < 1 || number.length > 100) {
+        alert("I NUMERI INSERITI NON SONO COMPRESI TRA 1 E 100");
+    } else {
+        
     }
-    document.getElementsByClassName("risultato")[0].innerHTML = "NUMERI INSERITI: " + user;
+    if (!user.includes(number)) {
+        if (sixTeenRandomNumber.includes(number)) {
+            alert("HAI PRESO UNA MINA");
+            check = true;
+            break;
+        } else {
+            user.push(number);
+            console.log(user);
+        }
+    } else {
+        alert("HAI GIA' INSERITO QUESTO NUMERO");
+    }
+
 }
+
+if (!check) {
+    document.getElementsByClassName("campo-minato")[0].innerHTML = "HAI VINTO: FINE DEL GIOCO";
+} else {
+    document.getElementsByClassName("campo-minato")[0].innerHTML = "HAI PERSO: FINE DEL GIOCO";
+}
+
+document.getElementsByClassName("risultato")[0].innerHTML = "NUMERI INSERITI: " + user.length;

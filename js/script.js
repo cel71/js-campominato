@@ -15,10 +15,10 @@ var tentativiUser = 5;
 
 while (user.length < tentativiUser) {
     var number = parseInt(prompt("BENVENUTO: Inserisci un numero tra 1 e 100"));
-    if (!number.length < 1 || number.length > 100) {
+    if (number < 1 || number > 100 || isNaN(number)) {
         alert("I NUMERI INSERITI NON SONO COMPRESI TRA 1 E 100");
-    } else {
-        
+        check = true;
+        break;
     }
     if (!user.includes(number)) {
         if (sixTeenRandomNumber.includes(number)) {
@@ -32,7 +32,6 @@ while (user.length < tentativiUser) {
     } else {
         alert("HAI GIA' INSERITO QUESTO NUMERO");
     }
-
 }
 
 if (!check) {
